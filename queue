@@ -1,0 +1,45 @@
+public class queue {
+    node front;
+    node rear;
+    int cnt;
+    int size;
+
+    public queue(int size) {
+        this.size = size;
+        cnt = 0;
+        front = null;
+    }
+
+    void enqueue(int data) {
+        if (isFull()) {
+            System.out.println("The queue is full");
+        } else {
+            node element = new node(data);
+            if (isEmpty()) {
+                front = element;
+                rear = element;
+            } else {
+                rear.next = element;
+                rear = rear.next;
+            }
+            cnt++;
+        }
+    }
+    void dequeue(){
+        if (isEmpty()){
+            System.out.println("The queue is empty");
+        } else {
+            front = front.next;
+            cnt--;
+        }
+    }
+
+    boolean isFull() {
+        return (cnt == size);
+    }
+
+    boolean isEmpty() {
+        return (cnt == 0);
+
+    }
+}
